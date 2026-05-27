@@ -93,7 +93,7 @@ int Adventure::operator()() const {
 int Adventure::countCharacters() const {
     int count = 0;
     for(auto& el : _entities) {
-        if(el != nullptr && el->category() == "Character") {
+        if(dynamic_cast<Character*>(el) != nullptr) {
             count++;
         }
     }
@@ -103,7 +103,7 @@ int Adventure::countCharacters() const {
 int Adventure::countCreatures() const {
     int count = 0;
     for(auto& el : _entities) {
-        if(el != nullptr && el->category() == "Creature") {
+        if(dynamic_cast<Creature*>(el) != nullptr) {
             count++;
         }
     }
@@ -113,7 +113,7 @@ int Adventure::countCreatures() const {
 int Adventure::countExactWarriors() const {
     int count = 0;
     for(auto& el : _entities) {
-        if(el != nullptr && el->type() == "Warrior") {
+        if(el != nullptr && typeid(*el) == typeid(Warrior)) {
             count++;
         }
     }
