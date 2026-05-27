@@ -32,7 +32,7 @@ class GameEntity {
     // metoda wirtualna category pozwalajca pobrac kategorie
     virtual std::string category() const = 0;
 
-    // virtualna metoda do klonowania lisci
+    // virtualna metoda do klonowania entity
     virtual GameEntity* clone() const = 0;
 
     private:
