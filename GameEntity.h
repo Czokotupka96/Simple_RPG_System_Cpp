@@ -40,15 +40,6 @@ class GameEntity {
     std::string _name;
 };
 
-// 1. `GameEntity`
-//    - abstrakcyjna klasa bazowa,
-//    - przechowuje nazwę obiektu,
-//    - pozwala pobrać nazwę,
-//    - posiada operator `()`, który zwraca wartość punktową obiektu,
-//    - pozwala wypisać obiekt operatorem `<<`,
-//    - posiada metodę `summary()` zwracającą tekst:
-//         "<category> <type> <name> score=<score> -> <details>"
-
 
 // Character --------------------------------------------------
 
@@ -64,11 +55,6 @@ class Character : virtual public GameEntity {
     // przechowuje poziom postaci
     int _level;
 };
-
-// 2. `Character : public GameEntity`
-//    - abstrakcyjna klasa dla postaci,
-//    - przechowuje poziom postaci,
-//    - kategoria to `"Character"`.
 
 
 // Fighter --------------------------------------------------
@@ -87,12 +73,6 @@ class Fighter : virtual public Character {
     std::string _weapon;
 };
 
-// 3. `Fighter : public Character`
-//    - abstrakcyjna klasa dla postaci walczących fizycznie,
-//    - przechowuje siłę i broń,
-//    - score:
-//         `level * 10 + strength * 2`
-
 
 // Spellcaster --------------------------------------------------
 
@@ -109,12 +89,6 @@ class Spellcaster : virtual public Character {
     int _mana;
     std::string _school;
 };
-
-// 4. `Spellcaster : public Character`
-//    - abstrakcyjna klasa dla postaci magicznych,
-//    - przechowuje manę i szkołę magii,
-//    - score:
-//         `level * 8 + mana * 3`
 
 
 // Warrior --------------------------------------------------
@@ -135,14 +109,6 @@ class Warrior : public Fighter {
     GameEntity* clone() const override;
 };
 
-// 5. `Warrior : public Fighter`
-//    - konkretna klasa wojownika,
-//    - typ: `"Warrior"`,
-//    - szczegóły:
-//         `"weapon=<weapon> level=<level> strength=<strength>"`,
-//    - akcja:
-//         `"<name> attacks with <weapon>"`
-
 
 // Mage --------------------------------------------------
 
@@ -162,14 +128,6 @@ class Mage : public Spellcaster {
     GameEntity* clone() const override;
 };
 
-// 6. `Mage : public Spellcaster`
-//    - konkretna klasa maga,
-//    - typ: `"Mage"`,
-//    - szczegóły:
-//         `"school=<school> level=<level> mana=<mana>"`,
-//    - akcja:
-//         `"<name> casts a <school> spell"`
-
 
 // Creature --------------------------------------------------
 
@@ -185,11 +143,6 @@ class Creature : virtual public GameEntity {
     // przechowuje poziom zagrożenia
     int _danger;
 };
-
-// 7. `Creature : public GameEntity`
-//    - abstrakcyjna klasa dla stworzeń,
-//    - przechowuje poziom zagrożenia,
-//    - kategoria to `"Creature"`.
 
 
 // Beast --------------------------------------------------
@@ -208,12 +161,6 @@ class Beast : virtual public Creature {
     std::string _habitat;
 };
 
-// 8. `Beast : public Creature`
-//    - abstrakcyjna klasa dla bestii,
-//    - przechowuje furię i środowisko,
-//    - score:
-//         `danger * 7 + fury * 2`
-
 
 // Undead --------------------------------------------------
 
@@ -230,12 +177,6 @@ class Undead : virtual public Creature {
     int _curse;
     std::string _relic;
 };
-
-// 9. `Undead : public Creature`
-//    - abstrakcyjna klasa dla nieumarłych,
-//    - przechowuje klątwę i relikt,
-//    - score:
-//         `danger * 8 + curse * 3`
 
 
 // Wolf --------------------------------------------------
@@ -256,14 +197,6 @@ class Wolf : public Beast {
     GameEntity* clone() const override;
 };
 
-// 10. `Wolf : public Beast`
-//    - konkretna klasa wilka,
-//    - typ: `"Wolf"`,
-//    - szczegóły:
-//         `"habitat=<habitat> danger=<danger> fury=<fury>"`,
-//    - akcja:
-//         `"<name> charges from the <habitat>"`
-
 
 // Skeleton --------------------------------------------------
 
@@ -282,10 +215,3 @@ class Skeleton : public Undead {
     // klonowanie
     GameEntity* clone() const override;
 };
-// 11. `Skeleton : public Undead`
-//    - konkretna klasa szkieletu,
-//    - typ: `"Skeleton"`,
-//    - szczegóły:
-//         `"relic=<relic> danger=<danger> curse=<curse>"`,
-//    - akcja:
-//         `"<name> rattles the <relic>"`

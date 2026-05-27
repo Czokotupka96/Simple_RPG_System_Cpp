@@ -169,17 +169,3 @@ GameEntity* Adventure::strongest() {
     }
     return best;
 }
-
-
-// 12. `Adventure`
-//    - przechowuje wskaźniki do `GameEntity`,
-//    - jest właścicielem dodanych obiektów,
-//    - usuwa obiekty w destruktorze,
-//    - pozwala dodawać obiekty operatorem `+=`,
-//    - udostępnia obiekty przez operator `[]`,
-//    - posiada operator `()`, który zwraca sumę punktów,
-//    - pozwala policzyć postacie,
-//    - pozwala policzyć stworzenia,
-//    - pozwala policzyć dokładnie obiekty klasy `Warrior`,
-//    - pozwala znaleźć pierwszy obiekt o dokładnym typie podanym przez `typeid`,
-//    - pozwala znaleźć obiekt o największym score.

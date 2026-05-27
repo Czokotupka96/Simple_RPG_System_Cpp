@@ -24,16 +24,6 @@ std::ostream& operator<<(std::ostream& os, const GameEntity& entity) {
     return os << entity.summary();
 }
 
-// 1. `GameEntity`
-//    - abstrakcyjna klasa bazowa,
-//    - przechowuje nazwę obiektu,
-//    - pozwala pobrać nazwę,
-//    - posiada operator `()`, który zwraca wartość punktową obiektu,
-//    - pozwala wypisać obiekt operatorem `<<`,
-//    - posiada metodę `summary()` zwracającą tekst:
-//         "<category> <type> <name> score=<score> -> <details>"
-
-
 
 // Character --------------------------------------------------
 
@@ -45,11 +35,6 @@ Character::Character(const std::string& name, int level)
 std::string Character::category() const {
     return "Character";
 }
-
-// 2. `Character : public GameEntity`
-//    - abstrakcyjna klasa dla postaci,
-//    - przechowuje poziom postaci,
-//    - kategoria to `"Character"`.
 
 
 // Fighter --------------------------------------------------
@@ -63,12 +48,6 @@ int Fighter::score() const {
     return _level * 10 + _strength * 2;
 }
 
-// 3. `Fighter : public Character`
-//    - abstrakcyjna klasa dla postaci walczących fizycznie,
-//    - przechowuje siłę i broń,
-//    - score:
-//         `level * 10 + strength * 2`
-
 
 // Spellcaster --------------------------------------------------
 
@@ -80,12 +59,6 @@ Spellcaster::Spellcaster(const std::string& name, int level, int mana, const std
 int Spellcaster::score() const {
     return _level * 8 + _mana * 3;
 }
-
-// 4. `Spellcaster : public Character`
-//    - abstrakcyjna klasa dla postaci magicznych,
-//    - przechowuje manę i szkołę magii,
-//    - score:
-//         `level * 8 + mana * 3`
 
 
 // Warrior --------------------------------------------------
@@ -112,15 +85,6 @@ GameEntity* Warrior::clone() const {
 }
 
 
-// 5. `Warrior : public Fighter`
-//    - konkretna klasa wojownika,
-//    - typ: `"Warrior"`,
-//    - szczegóły:
-//         `"weapon=<weapon> level=<level> strength=<strength>"`,
-//    - akcja:
-//         `"<name> attacks with <weapon>"`
-
-
 // Mage --------------------------------------------------
 
 // konkretna klasa maga
@@ -145,14 +109,6 @@ GameEntity* Mage::clone() const {
     return new Mage(*this);
 }
 
-// 6. `Mage : public Spellcaster`
-//    - konkretna klasa maga,
-//    - typ: `"Mage"`,
-//    - szczegóły:
-//         `"school=<school> level=<level> mana=<mana>"`,
-//    - akcja:
-//         `"<name> casts a <school> spell"`
-
 
 // Creature --------------------------------------------------
 
@@ -164,11 +120,6 @@ Creature::Creature(const std::string& name, int danger)
 std::string Creature::category() const {
     return "Creature";
 }
-
-// 7. `Creature : public GameEntity`
-//    - abstrakcyjna klasa dla stworzeń,
-//    - przechowuje poziom zagrożenia,
-//    - kategoria to `"Creature"`.
 
 
 // Beast --------------------------------------------------
@@ -182,12 +133,6 @@ int Beast::score() const {
     return _danger * 7 + _fury * 2;
 }
 
-// 8. `Beast : public Creature`
-//    - abstrakcyjna klasa dla bestii,
-//    - przechowuje furię i środowisko,
-//    - score:
-//         `danger * 7 + fury * 2`
-
 
 // Undead --------------------------------------------------
 
@@ -199,12 +144,6 @@ Undead::Undead(const std::string& name, int danger, int curse, const std::string
 int Undead::score() const {
     return _danger * 8 + _curse * 3;
 }
-
-// 9. `Undead : public Creature`
-//    - abstrakcyjna klasa dla nieumarłych,
-//    - przechowuje klątwę i relikt,
-//    - score:
-//         `danger * 8 + curse * 3`
 
 
 // Wolf --------------------------------------------------
@@ -231,15 +170,6 @@ GameEntity* Wolf::clone() const {
 }
 
 
-// 10. `Wolf : public Beast`
-//    - konkretna klasa wilka,
-//    - typ: `"Wolf"`,
-//    - szczegóły:
-//         `"habitat=<habitat> danger=<danger> fury=<fury>"`,
-//    - akcja:
-//         `"<name> charges from the <habitat>"`
-
-
 // Skeleton --------------------------------------------------
 
 // konstruktor przyjmujacy nazwe, poziom zagrozenia, klatwe i relikt
@@ -262,11 +192,3 @@ std::string Skeleton::action() const {
 GameEntity* Skeleton::clone() const {
     return new Skeleton(*this);
 }
-
-// 11. `Skeleton : public Undead`
-//    - konkretna klasa szkieletu,
-//    - typ: `"Skeleton"`,
-//    - szczegóły:
-//         `"relic=<relic> danger=<danger> curse=<curse>"`,
-//    - akcja:
-//         `"<name> rattles the <relic>"`
