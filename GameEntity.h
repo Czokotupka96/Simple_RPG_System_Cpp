@@ -32,6 +32,9 @@ class GameEntity {
     // metoda wirtualna category pozwalajca pobrac kategorie
     virtual std::string category() const = 0;
 
+    // virtualna metoda do klonowania lisci
+    virtual GameEntity* clone() const = 0;
+
     private:
     // przechowuje nazwę obiektu
     std::string _name;
@@ -127,6 +130,9 @@ class Warrior : public Fighter {
     std::string details() const override;
     // akcja: "<name> attacks with <weapon>"
     std::string action() const override;
+
+    // klonowanie
+    GameEntity* clone() const override;
 };
 
 // 5. `Warrior : public Fighter`
@@ -151,6 +157,9 @@ class Mage : public Spellcaster {
     std::string details() const override;
     // akcja: "<name> casts a <school> spell"
     std::string action() const override;
+
+    // klonowanie
+    GameEntity* clone() const override;
 };
 
 // 6. `Mage : public Spellcaster`
@@ -242,6 +251,9 @@ class Wolf : public Beast {
     std::string details() const override;
     // akcja: "<name> charges from the <habitat>"
     std::string action() const override;
+
+    // klonowanie
+    GameEntity* clone() const override;
 };
 
 // 10. `Wolf : public Beast`
@@ -266,6 +278,9 @@ class Skeleton : public Undead {
     std::string details() const override;
     // akcja: "<name> rattles the <relic>"
     std::string action() const override;
+
+    // klonowanie
+    GameEntity* clone() const override;
 };
 // 11. `Skeleton : public Undead`
 //    - konkretna klasa szkieletu,

@@ -5,6 +5,15 @@
 Adventure::Adventure(const std::string& name)
     : _name(name) {}
 
+// konstruktor kopiujacy
+Adventure::Adventure(const Adventure& other) : _name(other._name) {
+    for(auto& el : other._entities) {
+        if(el != nullptr) {
+            _entities.push_back(el->clone());
+        }
+    }
+}
+
 // usuwa obiekty w destruktorze
 Adventure::~Adventure() {
     for(auto& el : _entities) {
@@ -13,6 +22,28 @@ Adventure::~Adventure() {
         }
     }
     _entities.clear();
+}
+
+// przeladowany operator=
+Adventure& Adventure::operator=(const Adventure& other) {
+    if(this == &other) {
+        return *this;
+    }
+
+    for(auto& el : _entities) {
+        if(el != nullptr) {
+            delete el;
+        }
+    }
+    _entities.clear();
+    _name = other._name;
+
+    for(auto& el : other._entities) {
+        if(el != nullptr) {
+            _entities.push_back(el->clone());
+        }
+    }
+    return *this;
 }
 
 // pozwala pobrac nazwe

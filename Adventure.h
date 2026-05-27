@@ -10,6 +10,10 @@ class Adventure {
     Adventure(const std::string& name);
     // usuwa obiekty w destruktorze
     ~Adventure();
+    // kosntruktor kopiujacy
+    Adventure(const Adventure& other);
+    // operator przypisania
+    Adventure& operator=(const Adventure& other);
 
     // pozwala pobrac nazwe
     std::string getName() const;

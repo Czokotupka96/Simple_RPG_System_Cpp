@@ -106,6 +106,10 @@ std::string Warrior::details() const {
 std::string Warrior::action() const {
     return getName() + " attacks with " + _weapon;
 }
+// klonowanie
+GameEntity* Warrior::clone() const {
+    return new Warrior(*this);
+}
 
 
 // 5. `Warrior : public Fighter`
@@ -135,6 +139,10 @@ std::string Mage::details() const {
 // akcja: "<name> casts a <school> spell"
 std::string Mage::action() const {
     return getName() + " casts a " + _school + " spell";
+}
+// klonowanie
+GameEntity* Mage::clone() const {
+    return new Mage(*this);
 }
 
 // 6. `Mage : public Spellcaster`
@@ -217,6 +225,10 @@ std::string Wolf::details() const {
 std::string Wolf::action() const {
     return getName() + " charges from the " + _habitat;
 }
+// klonowanie
+GameEntity* Wolf::clone() const {
+    return new Wolf(*this);
+}
 
 
 // 10. `Wolf : public Beast`
@@ -245,6 +257,10 @@ std::string Skeleton::details() const {
 // akcja: "<name> rattles the <relic>"
 std::string Skeleton::action() const {
     return getName() + " rattles the " + _relic;
+}
+// klonowanie
+GameEntity* Skeleton::clone() const {
+    return new Skeleton(*this);
 }
 
 // 11. `Skeleton : public Undead`
