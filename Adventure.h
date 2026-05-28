@@ -50,8 +50,8 @@ class Adventure {
     GameEntity* strongest();
 
     private:
-    // przechowuje wskaźniki do `GameEntity`
-    std::vector<GameEntity*> _entities;
     // przechowuje nazwe
     std::string _name;
+    // przechowuje wskaźniki do `GameEntity`
+    std::vector<GameEntity*> _entities;
 };
