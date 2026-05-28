@@ -18,7 +18,7 @@ class Adventure {
     // pozwala pobrac nazwe
     std::string getName() const;
     // pozwala dodawać obiekty operatorem `+=`
-    void operator+=(GameEntity* entity);
+    Adventure& operator+=(GameEntity* entity);
     // pozwala pobrac rozmiar
     std::size_t size() const;
 

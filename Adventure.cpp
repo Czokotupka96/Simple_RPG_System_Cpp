@@ -51,10 +51,11 @@ std::string Adventure::getName() const {
     return _name;
 }
 // pozwala dodawać obiekty operatorem `+=`
-void Adventure::operator+=(GameEntity* entity) {
+Adventure& Adventure::operator+=(GameEntity* entity) {
     if(entity != nullptr) {
         _entities.push_back(entity);
     }
+    return *this;
 }
 // pozwala pobrac rozmiar
 std::size_t Adventure::size() const {
