@@ -13,6 +13,9 @@ Adventure::Adventure(const Adventure& other) : _name(other._name) {
         }
     }
 }
+// konstruktor przenoszacy
+Adventure::Adventure(Adventure&& other) noexcept
+    : _name(std::move(other._name)), _entities(std::move(other._entities)) {}
 
 // usuwa obiekty w destruktorze
 Adventure::~Adventure() {
@@ -43,6 +46,24 @@ Adventure& Adventure::operator=(const Adventure& other) {
             _entities.push_back(el->clone());
         }
     }
+    return *this;
+}
+// przeladowany operator= przenoszacy
+Adventure& Adventure::operator=(Adventure&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+
+    for (auto& el : _entities) {
+        if (el != nullptr) {
+            delete el;
+        }
+    }
+    _entities.clear();
+
+    _name = std::move(other._name);
+    _entities = std::move(other._entities);
+
     return *this;
 }
 
