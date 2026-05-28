@@ -1,4 +1,5 @@
 #include "Adventure.h"
+#include <utility>
 
 
 // konstruktor przyjmujacy nazwe
